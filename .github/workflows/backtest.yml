@@ -19,20 +19,27 @@ on:
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install dependencies
         run: pip install pandas numpy yfinance scipy pyyaml
-      
+
       - name: Validate YAML & JSON
         run: python3 scripts/validate_config.py
-      
+
       - name: Run backtest
         run: python3 scripts/backtest.py
+
+      - name: Notify Telegram on failure
+        if: failure()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot8642765029:AAE3kn8_28mPOlWLC_4xfNs-RtQje9XCOm8/sendMessage" \
+            -d "chat_id=8217991576" \
+            -d "text=❌ GitHub Actions 回測失敗！ Repo: us-equity-strategy Workflow: ${{ github.workflow }} Run: ${{ github.run_id }}"
