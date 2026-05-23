@@ -1,0 +1,48 @@
+metadata:
+  strategy_name: "US_Equity_Momentum_Hermes_v1"
+  description: "美股大盤動能與反轉自我完善策略"
+  base_currency: "USD"
+  version: "1.0.0"
+  created: "2026-05-23"
+  last_modified: "2026-05-23"
+
+# 核心環境與工具配置
+execution_environment:
+  data_provider: "Yahoo Finance API"
+  execution_broker: "Alpaca API"
+  check_interval_minutes: 30
+
+# 投資組合機械限制 (Portfolio Mechanics)
+portfolio_constraints:
+  max_open_positions: 10
+  max_capital_per_stock_pct: 10
+  cash_reserve_pct: 5
+  slippage_tolerance_pct: 0.05
+
+# 待優化的學習參數 (Hermes 每週微調)
+learned_parameters:
+  universe_filter: "SPY_COMPONENTS"
+  rsi_period: 14
+  rsi_oversold_threshold: 30
+  rsi_overbought_threshold: 70
+  trailing_stop_loss_pct: 5.0
+  take_profit_pct: 15.0
+
+# 風險管理
+risk_management:
+  max_portfolio_drawdown_pct: 8.0
+  max_consecutive_losses: 5
+  min_sharpe_ratio: 1.2
+  position_sizing_method: "equal_weight"
+
+# 進場邏輯
+entry_logic:
+  rsi_oversold_enabled: true
+  volume_spike_mult: 1.5
+  min_volume: 1000000
+
+# 出場邏輯
+exit_logic:
+  trailing_stop_enabled: true
+  take_profit_enabled: true
+  rsi_overbought_exit: true

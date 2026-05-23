@@ -1,0 +1,9 @@
+date,trade_id,symbol,action,quantity,price_usd,total_usd,commission,slippage_pct,signal_strength,rsi_entry,position_status,realized_pnl_pct,exit_reason,entry_time,exit_time,duration_hours,comment
+2026-05-16,T001,AAPL,BUY,50,182.50,9125.00,0.00,0.05,0.78,28.5,OPEN,0.00,,09:35:00,,,Initial entry on RSI oversold
+2026-05-16,T002,MSFT,BUY,30,415.20,12456.00,0.00,0.05,0.82,27.8,CLOSED,4.20,TAKE_PROFIT,09:42:00,2026-05-20 14:30:00,96.8,RSI overbought exit
+2026-05-19,T003,NVDA,BUY,20,875.50,17510.00,0.00,0.05,0.88,24.3,OPEN,0.00,,10:15:00,,,High momentum entry
+2026-05-20,T004,TSLA,SELL,40,175.80,7032.00,0.00,0.05,0.71,72.1,CLOSED,-2.10,STOP_LOSS,10:30:00,2026-05-20 15:45:00,5.25,Trailing stop triggered
+2026-05-21,T005,META,BUY,25,475.60,11890.00,0.00,0.05,0.75,29.7,OPEN,0.00,,11:00:00,,,RSI oversold bounce
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,

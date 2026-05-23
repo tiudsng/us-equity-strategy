@@ -1,0 +1,28 @@
+{
+  "strategy_goals": {
+    "evaluation_cycle_days": 7,
+    "success_metrics": {
+      "target_30day_return_pct": 3.5,
+      "minimum_sharpe_ratio": 1.2,
+      "win_rate_threshold_pct": 55.0,
+      "max_daily_drawdown_pct": 2.0
+    },
+    "failure_conditions": {
+      "max_drawdown_pct": 8.0,
+      "consecutive_losses_limit": 5,
+      "unacceptable_sharpe_ratio": 0.8,
+      "max_losing_days": 10
+    },
+    "backtest_requirements": {
+      "min_sharpe_ratio_to_adopt": 1.2,
+      "min_win_rate_to_adopt": 55.0,
+      "max_drawdown_to_adopt_pct": 8.0,
+      "min_trades_for_significance": 30
+    }
+  },
+  "optimization_rules": {
+    "single_variable principle": true,
+    "max_parameter_shift_per_cycle": 0.15,
+    "require_backtest_before_apply": true
+  }
+}
