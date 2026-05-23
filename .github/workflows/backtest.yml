@@ -1,0 +1,38 @@
+name: Backtest & Strategy Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.yaml'
+      - '**.json'
+      - '**.csv'
+      - 'scripts/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - '**.yaml'
+      - '**.json'
+      - '**.csv'
+      - 'scripts/**'
+
+jobs:
+  backtest:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: pip install pandas numpy yfinance scipy pyyaml
+      
+      - name: Validate YAML & JSON
+        run: python3 scripts/validate_config.py
+      
+      - name: Run backtest
+        run: python3 scripts/backtest.py
